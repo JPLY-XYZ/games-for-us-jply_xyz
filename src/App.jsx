@@ -1,14 +1,18 @@
-import { useState } from 'react'
-import './App.css'
+import { BrowserRouter } from "react-router-dom";
+import "./App.css";
+import Router from "./Router";
+import BaseLayout from "./BaseLayout";
 
 function App() {
-  const [count, setCount] = useState(0)
-
   return (
     <>
-      <div>CREATED BY JPLY-XYZ</div>
+      <BrowserRouter>
+        <BaseLayout>
+          <Router />
+        </BaseLayout>
+      </BrowserRouter>
     </>
-  )
+  );
 }
 
-export default App
+export default App;
