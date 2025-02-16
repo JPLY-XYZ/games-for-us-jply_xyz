@@ -1,6 +1,6 @@
 import { useNavigate } from "react-router-dom";
-import LoginForm from "../../components/auth/loginForm";
 import { useAuth } from "../../context/AuthContext";
+import LoginForm from "../../components/auth/loginForm";
 
 function Login() {
   const navigate = useNavigate(); // hook para navegar
