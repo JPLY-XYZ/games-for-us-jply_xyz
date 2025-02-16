@@ -1,25 +1,29 @@
 import { useState } from "react";
+import { useAuth } from "../../context/AuthContext";
+import { Link } from "react-router-dom";
 
 function LoginForm() {
 
    const [email, setEmail] = useState('');
    const [password, setPassword] = useState('');
    const [remember, setRemember] = useState(false);
+   const {login} = useAuth();
  
-   // Función para manejar el envío del formulario
    const handleSubmit = (e) => {
-     e.preventDefault(); // Prevenir el comportamiento predeterminado del formulario
+     e.preventDefault(); 
  
-     // Lógica para manejar los datos (por ejemplo, enviarlos a un servidor)
      
      console.log('Email:', email);
      console.log('Password:', password);
      console.log('Recordar:', remember);
 
-     // Resetear los campos
+     login(email, password);
+
      setEmail('');
      setPassword('');
      setRemember(false);
+
+     
    };
 
 
@@ -62,12 +66,12 @@ function LoginForm() {
             </a>
             <p className="text-white mt-4">
               Don't have an account?
-              <a
+              <Link to={"/register"} 
                 className="text-sm text-blue-500 -200 hover:underline mt-4"
                 href="#"
               >
                 Signup
-              </a>
+              </Link>
             </p>
           </div>
           <button

@@ -1,9 +1,10 @@
 import React from "react";
+import Header from "./components/Header";
 function BaseLayout({ children }) {
   return (
     <>
-      <header className="fixed top-0 left-0 w-full bg-gray-900 text-white px-6 py-2 flex justify-between">
-        esto es el menu de arriba
+      <header className="fixed top-0 left-0 w-full bg-gray-900 text-white px-6 py-2 ">
+       <Header />
       </header>
       <aside className="fixed bottom-0 left-0 w-full h-auto bg-gray-800 text-white p-6 md:top-0 md:left-0 md:h-screen md:w-64 md:order-first">
         esto es el menu lateral
