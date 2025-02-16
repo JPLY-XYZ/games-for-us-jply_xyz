@@ -1,5 +1,5 @@
 import React, { createContext, useState, useContext, useEffect } from "react";
-import CryptoJS from "crypto-js";
+import { encryptJSON } from "../lib/cryptoUtils";
 
 // Crear el contexto
 const AuthContext = createContext();
@@ -13,9 +13,27 @@ export const AuthProvider = ({ children }) => {
   useEffect(() => {
     // Aquí puedes verificar la autenticación, por ejemplo, usando cookies o localStorage
     const savedUser = localStorage.getItem("user");
+    console.log(savedUser);
     if (savedUser) {
-      setUser(JSON.parse(savedUser));
-      setIsAuthenticated(true);
+      fetch("http://localhost:3000/api/auth", {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "x-api-key": import.meta.env.VITE_CLIENT_API_KEY,
+        },
+        body: savedUser,
+      })
+      .then(response => {
+        if (response.ok) {
+          console.log("Autenticación exitosa");
+          setUser(savedUser);
+          setIsAuthenticated(true);
+          console.log("Login exitoso");
+        }
+      })
+      .catch(error => {
+        console.error("Error en la autenticación:", error);
+      });
     }
   }, []);
 
@@ -25,13 +43,17 @@ export const AuthProvider = ({ children }) => {
       email: email,
       password: password,
     };
-    const userDataString = JSON.stringify(userData);
-    const encrypted = CryptoJS.AES.encrypt(
-      userDataString,
-      import.meta.env.VITE_ENCRYPTION_CLIENT_KEY
-    ).toString();
 
-    console.log("Encrypted data:", encrypted);
+    console.log("User data:", userData);
+    console.log("Client API Key:", import.meta.env.VITE_ENCRYPTION_CLIENT_KEY);
+
+    const encryptedResult = encryptJSON(
+      userData,
+      import.meta.env.VITE_ENCRYPTION_CLIENT_KEY
+    );
+
+    console.log("IV:", encryptedResult.iv);
+    console.log("Encrypted Data:", encryptedResult.encryptedData);
 
     const response = await fetch("http://localhost:3000/api/auth/login", {
       method: "POST",
@@ -39,7 +61,7 @@ export const AuthProvider = ({ children }) => {
         "Content-Type": "application/json",
         "x-api-key": import.meta.env.VITE_CLIENT_API_KEY,
       },
-      body: JSON.stringify({ data: encrypted })
+      body: JSON.stringify(encryptedResult),
     });
 
     if (!response.ok) {
@@ -47,15 +69,11 @@ export const AuthProvider = ({ children }) => {
     }
 
     if (response.ok) {
-      // const {data} = await response.json();
-      // const decryptedData = CryptoJS.AES.decrypt(
-      //   data.data,
-      //   import.meta.env.VITE_ENCRYPTION_CLIENT_KEY
-      // ).toString(CryptoJS.enc.Utf8);
-      // console.log("Decrypted data:", decryptedData);
-      // const userData = JSON.parse(decryptedData);
+      const {body} = await response.json();
 
-      // console.log("User data:", userData);
+      setUser(body);
+      setIsAuthenticated(true);
+      localStorage.setItem("user", body); // Crear el item en el localStorage
 
       console.log("Login exitoso");
     }

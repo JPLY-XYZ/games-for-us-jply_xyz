@@ -17,7 +17,7 @@ function LoginForm() {
      console.log('Password:', password);
      console.log('Recordar:', remember);
 
-     login(email, password);
+     login(email, password, remember);
 
      setEmail('');
      setPassword('');
@@ -39,7 +39,7 @@ function LoginForm() {
           <input
             placeholder="Email address"
             className="bg-gray-700 text-gray-200 border-0 rounded-md p-2 mb-4 focus:bg-gray-600 focus:outline-none focus:ring-1 focus:ring-blue-500 transition ease-in-out duration-150"
-            type="email"
+            type="text"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
