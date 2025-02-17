@@ -23,17 +23,17 @@ export const AuthProvider = ({ children }) => {
         },
         body: savedUser,
       })
-      .then(response => {
-        if (response.ok) {
+        .then((response) => response.json()) // ✅ Resolvemos la promesa
+        .then(({body}) => {
+          console.log(body); // Ya es un objeto JSON
           console.log("Autenticación exitosa");
-          setUser(savedUser);
+          setUser(JSON.parse(body));
           setIsAuthenticated(true);
           console.log("Login exitoso");
-        }
-      })
-      .catch(error => {
-        console.error("Error en la autenticación:", error);
-      });
+        })
+        .catch((error) => {
+          console.error("Error en la autenticación:", error);
+        });
     }
   }, []);
 
@@ -55,25 +55,30 @@ export const AuthProvider = ({ children }) => {
     console.log("IV:", encryptedResult.iv);
     console.log("Encrypted Data:", encryptedResult.encryptedData);
 
-    const response = await fetch(import.meta.env.VITE_API_URL + "/api/auth/login", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-        "x-api-key": import.meta.env.VITE_CLIENT_API_KEY,
-      },
-      body: JSON.stringify(encryptedResult),
-    });
+    const response = await fetch(
+      import.meta.env.VITE_API_URL + "/api/auth/login",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "x-api-key": import.meta.env.VITE_CLIENT_API_KEY,
+        },
+        body: JSON.stringify(encryptedResult),
+      }
+    );
 
     if (!response.ok) {
       console.log("Error en la solicitud:", response.status);
     }
 
     if (response.ok) {
-      const {body} = await response.json();
+      const { body } = await response.json();
 
-      setUser(body);
+      console.log(JSON.parse(body.userData));
+
+      setUser(JSON.parse(body.userData));
       setIsAuthenticated(true);
-      localStorage.setItem("user", body); // Crear el item en el localStorage
+      localStorage.setItem("user", body.loginToken); // Crear el item en el localStorage
 
       console.log("Login exitoso");
     }
