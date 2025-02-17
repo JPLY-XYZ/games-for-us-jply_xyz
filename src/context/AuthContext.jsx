@@ -1,5 +1,6 @@
 import React, { createContext, useState, useContext, useEffect } from "react";
 import { encryptJSON } from "../lib/cryptoUtils";
+import toast from "react-hot-toast";
 
 // Crear el contexto
 const AuthContext = createContext();
@@ -66,7 +67,7 @@ export const AuthProvider = ({ children }) => {
         body: JSON.stringify(encryptedResult),
       }
     );
-   
+
     if (!response.ok) {
       console.log("Error en la solicitud:", response.status);
       return error;
@@ -80,12 +81,16 @@ export const AuthProvider = ({ children }) => {
       setUser(JSON.parse(body.userData));
       setIsAuthenticated(true);
       localStorage.setItem("user", body.loginToken); // Crear el item en el localStorage
+
       console.log("Login exitoso");
     }
   };
 
   const logout = () => {
     setUser(null);
+    toast(<b>Sesion cerrada!</b>, {
+      icon: '👋',
+    });
     setIsAuthenticated(false);
     localStorage.removeItem("user"); // Limpiar el localStorage
   };

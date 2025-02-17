@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import { useAuth } from "../../context/AuthContext";
 import { useState } from "react";
@@ -8,12 +8,33 @@ function AuthHeaderButton() {
   const { isAuthenticated, user, logout } = useAuth();
   const [isOpen, setIsOpen] = useState(false);
 
+
+  const excludedRef = useRef(null); // Referencia al área específica que queremos excluir
+
+  useEffect(() => {
+    // Función para manejar clics globales
+    const handleClickOutside = (event) => {
+      if (excludedRef.current && !excludedRef.current.contains(event.target)) {
+        setIsOpen(false); // Cerrar si el clic está fuera del área específica
+      }
+    };
+
+    // Agregar el listener de clic global
+    document.addEventListener('click', handleClickOutside);
+
+    // Limpiar el evento cuando el componente se desmonte
+    return () => {
+      document.removeEventListener('click', handleClickOutside);
+    };
+  }, []); // El array vacío asegura que este efecto se ejecute una sola vez
+
   
   return (
-    <div className="flex justify-end">
-      <div className="relative inline-block text-left">
+    
+    <div ref={excludedRef} className="relative inline-block text-left">
         <button
           onClick={() => setIsOpen(!isOpen)}
+          
           className="flex items-center gap-2 bg-gray-200 p-2 rounded-xl hover:bg-gray-300 transition"
         >
           {isAuthenticated ? (
@@ -40,11 +61,12 @@ function AuthHeaderButton() {
             <ul className="text-gray-700">
               {isAuthenticated ? (
                 <>
-                  <li className="p-3 hover:bg-gray-100 cursor-pointer flex items-center gap-2">
+                  <li className="p-3 hover:bg-gray-100 cursor-pointer flex items-center gap-2" onClick={() => setIsOpen(!isOpen)}>
                     <Settings className="w-4 h-4" /> Configuración
                   </li>
                   <li
-                    onClick={logout}
+                    onClick={() => {logout(); setIsOpen(!isOpen);  }}
+
                     className="p-3 hover:bg-gray-100 cursor-pointer flex items-center gap-2"
                   >
                     <LogOut className="w-4 h-4" /> Cerrar sesión
@@ -53,13 +75,13 @@ function AuthHeaderButton() {
               ) : (
                 <>
                   <Link to="/login">
-                    <li className="p-3 hover:bg-gray-100 cursor-pointer flex items-center gap-2">
+                    <li className="p-3 hover:bg-gray-100 cursor-pointer flex items-center gap-2" onClick={() => setIsOpen(!isOpen)}>
                       <LogIn className="w-4 h-4" />
                       Iniciar sesión
                     </li>
                   </Link>
-                  <Link to="/login">
-                    <li className="p-3 hover:bg-gray-100 cursor-pointer flex items-center gap-2">
+                  <Link to="/register">
+                    <li className="p-3 hover:bg-gray-100 cursor-pointer flex items-center gap-2" onClick={() => setIsOpen(!isOpen)}>
                       <AtSign className="w-4 h-4" />
                       Crear cuenta
                     </li>
@@ -70,7 +92,7 @@ function AuthHeaderButton() {
           </div>
         )}
       </div>
-    </div>
+ 
   );
 }
 

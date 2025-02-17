@@ -21,7 +21,7 @@ function LoginForm() {
        {
          loading: 'Iniciando sesion...',
          success: <b>Sesion iniciada !</b>,
-         error: <b>No se puede inciar sesion.</b>,
+         error: <b>No se puede iniciar sesion.</b>,
        }
      );
   

@@ -1,5 +1,6 @@
 import { Link, useNavigate } from "react-router-dom";
 import { useAuth } from "../../context/AuthContext";
+import RegisterForm from "../../components/auth/RegisterForm";
 
 function Register() {
   const navigate = useNavigate(); // hook para navegar
@@ -11,11 +12,8 @@ function Register() {
 
   return (
     <>
-      <h1>REGISTER IS DISABLED IN THIS MOMEMENT</h1>
-      <div className="flex flex-col items-center justify-center  dark">
-        <Link to="/login">Login here</Link>
-        <Link to="/">Home</Link>
-      </div>
+      
+     <RegisterForm />
     </>
   );
 }
