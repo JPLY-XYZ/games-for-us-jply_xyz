@@ -1,27 +1,34 @@
 import { useState } from "react";
 import { useAuth } from "../../context/AuthContext";
 import { Link } from "react-router-dom";
+import toast from "react-hot-toast";
 
 function LoginForm() {
 
    const [email, setEmail] = useState('');
    const [password, setPassword] = useState('');
-   const [remember, setRemember] = useState(false);
+   const [remember, setRemember] = useState(true);
    const {login} = useAuth();
  
    const handleSubmit = (e) => {
-     e.preventDefault(); 
- 
-     
+     e.preventDefault();      
      console.log('Email:', email);
      console.log('Password:', password);
      console.log('Recordar:', remember);
 
-     login(email, password, remember);
-
+     toast.promise(
+      login(email, password, remember),
+       {
+         loading: 'Iniciando sesion...',
+         success: <b>Sesion iniciada !</b>,
+         error: <b>No se puede inciar sesion.</b>,
+       }
+     );
+  
      setEmail('');
      setPassword('');
      setRemember(false);
+    
    };
 
   return (
@@ -48,7 +55,7 @@ function LoginForm() {
               className="text-sm text-gray-200 cursor-pointer"
               htmlFor="remember-me"
             >
-              <input className="mr-2" id="remember-me" type="checkbox" checked={remember} onChange={(e) => setRemember(e.target.checked)}/>
+              <input className="mr-2" id="remember-me"  type="checkbox" checked={remember} onChange={(e) => setRemember(e.target.checked)}/>
               Remember me
             </label>
             <a

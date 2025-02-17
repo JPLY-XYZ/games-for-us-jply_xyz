@@ -25,19 +25,19 @@ function Aside() {
           </div>
         </button>
         <button className="flex items-center px-4 py-2 bg-gray-600 text-white rounded-lg hover:bg-gray-700 focus:outline-none">
-        <div className="flex items-center justify-center mx-auto md:mx-0 gap-2">
+        <div className="flex items-center justify-center mx-auto md:mx-0 gap-4">
           <Search />
           <span className="hidden sm:inline">Buscador</span>
           </div>
         </button>
         <button className="flex items-center px-4 py-2 bg-gray-600 text-white rounded-lg hover:bg-gray-700 focus:outline-none">
-        <div className="flex items-center justify-center mx-auto md:mx-0 gap-2">
+        <div className="flex items-center justify-center mx-auto md:mx-0 gap-4">
           <ListChecks />
           <span className="hidden sm:inline">Lista A</span>
           </div>
         </button>
         <button className="flex items-center px-4 py-2 bg-gray-600 text-white rounded-lg hover:bg-gray-700 focus:outline-none">
-        <div className="flex items-center justify-center mx-auto md:mx-0 gap-2">
+        <div className="flex items-center justify-center mx-auto md:mx-0 gap-4">
           <CalendarClock />
           <span className="hidden sm:inline">Lista B</span>
           </div>
