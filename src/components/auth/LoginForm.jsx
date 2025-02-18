@@ -12,9 +12,6 @@ function LoginForm() {
  
    const handleSubmit = (e) => {
      e.preventDefault();      
-     console.log('Email:', email);
-     console.log('Password:', password);
-     console.log('Recordar:', remember);
 
      toast.promise(
       login(email, password, remember),
@@ -32,7 +29,7 @@ function LoginForm() {
    };
 
   return (
-    <div className="flex flex-col items-center justify-center h-screen dark">
+    <div className="flex flex-col items-center justify-center">
       <div className="w-full max-w-md bg-gray-800 rounded-lg shadow-md p-6">
         <h2 className="text-2xl font-bold text-gray-200 mb-4">Login</h2>
         <form className="flex flex-col" onSubmit={handleSubmit}>

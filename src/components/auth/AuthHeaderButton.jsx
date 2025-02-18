@@ -44,7 +44,7 @@ function AuthHeaderButton() {
                 alt="User"
                 className="w-8 h-8 rounded-full mr-2"
               />
-              <span className="hidden sm:inline">{user?.nickname}</span>
+              <span className="hidden sm:inline">{user?.nickName}</span>
             </>
           ) : (
             <>
@@ -61,9 +61,11 @@ function AuthHeaderButton() {
             <ul className="text-gray-700">
               {isAuthenticated ? (
                 <>
+                <Link to="/configure">
                   <li className="p-3 hover:bg-gray-100 cursor-pointer flex items-center gap-2" onClick={() => setIsOpen(!isOpen)}>
                     <Settings className="w-4 h-4" /> Configuración
                   </li>
+                </Link>
                   <li
                     onClick={() => {logout(); setIsOpen(!isOpen);  }}
 

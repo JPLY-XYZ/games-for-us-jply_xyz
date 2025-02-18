@@ -5,6 +5,7 @@ import { Routes, Route } from 'react-router-dom';
 import NotFound from './pages/NotFound';
 import Login from './pages/auth/Login';
 import Register from './pages/auth/Register';
+import Config from './pages/auth/Config';
 
 
 function Router() {
@@ -14,6 +15,7 @@ function Router() {
       <Route path="/" element={<h1>Home</h1>} />
       <Route path="/login" element={<Login />} />
       <Route path="/register" element={<Register />} />
+      <Route path="/configure" element={<Config />} />
       <Route path="*" element={<NotFound />} />
     </Routes>
   );

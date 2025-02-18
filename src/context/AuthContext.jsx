@@ -14,7 +14,7 @@ export const AuthProvider = ({ children }) => {
   useEffect(() => {
     // Aquí puedes verificar la autenticación, por ejemplo, usando cookies o localStorage
     const savedUser = localStorage.getItem("user");
-    console.log(savedUser);
+  
     if (savedUser) {
       fetch(import.meta.env.VITE_API_URL + "/api/auth", {
         method: "POST",
@@ -26,8 +26,6 @@ export const AuthProvider = ({ children }) => {
       })
         .then((response) => response.json()) // ✅ Resolvemos la promesa
         .then(({body}) => {
-          console.log(body); // Ya es un objeto JSON
-          console.log("Autenticación exitosa");
           setUser(JSON.parse(body));
           setIsAuthenticated(true);
           console.log("Login exitoso");
@@ -45,16 +43,10 @@ export const AuthProvider = ({ children }) => {
       password: password,
     };
 
-    console.log("User data:", userData);
-    console.log("Client API Key:", import.meta.env.VITE_ENCRYPTION_CLIENT_KEY);
-
     const encryptedResult = encryptJSON(
       userData,
       import.meta.env.VITE_ENCRYPTION_CLIENT_KEY
     );
-
-    console.log("IV:", encryptedResult.iv);
-    console.log("Encrypted Data:", encryptedResult.encryptedData);
 
     const response = await fetch(
       import.meta.env.VITE_API_URL + "/api/auth/login",
@@ -69,14 +61,12 @@ export const AuthProvider = ({ children }) => {
     );
 
     if (!response.ok) {
-      console.log("Error en la solicitud:", response.status);
+      console.error("Error en la solicitud:", response.status);
       return error;
     }
 
     if (response.ok) {
       const { body } = await response.json();
-
-      console.log(JSON.parse(body.userData));
 
       setUser(JSON.parse(body.userData));
       setIsAuthenticated(true);
@@ -85,6 +75,201 @@ export const AuthProvider = ({ children }) => {
       console.log("Login exitoso");
     }
   };
+
+  const register = async (email, password, fullName, nickName) => {
+    // Crear el objeto de datos del usuario
+    const newUserData = {
+      email: email,
+      password: password,
+      fullName: fullName,
+      nickName: nickName
+    };
+
+      const encryptedResult = encryptJSON(
+      newUserData,
+      import.meta.env.VITE_ENCRYPTION_CLIENT_KEY
+    );
+
+    const response = await fetch(
+      import.meta.env.VITE_API_URL + "/api/auth/register",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "x-api-key": import.meta.env.VITE_CLIENT_API_KEY,
+        },
+        body: JSON.stringify(encryptedResult),
+      }
+    );
+
+    if (response.status == 406) {
+      throw new Error("El correo ya está en uso");
+    }
+    
+
+    if (!response.ok) {
+      console.error("Error en la solicitud:", response.status);
+      return error;
+    }
+
+    
+
+    if (response.ok) {
+      const { body } = await response.json();
+
+      setUser(JSON.parse(body.userData));
+      setIsAuthenticated(true);
+      localStorage.setItem("user", body.loginToken); // Crear el item en el localStorage
+
+      console.log("Registro exitoso");
+    }
+  };
+
+  //Atualizar  datos usuario
+
+  const updateEmail = async (email) => {
+    const savedUser = localStorage.getItem("user");
+    // Crear el objeto de datos del usuario
+    const newUpdatedData = {
+      email: email,
+      usuarioId: savedUser
+    };
+
+    console.log("User data:", newUpdatedData);
+
+    const encryptedResult = encryptJSON(
+      newUpdatedData,
+      import.meta.env.VITE_ENCRYPTION_CLIENT_KEY
+    );
+
+    const response = await fetch(
+      import.meta.env.VITE_API_URL + "/api/auth/config/mail",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "x-api-key": import.meta.env.VITE_CLIENT_API_KEY,
+        },
+        body: JSON.stringify(encryptedResult),
+      }
+    );
+
+    if (!response.ok) {
+      console.error("Error en la solicitud:", response.status);
+      return error;
+    }
+
+    if (response.ok) {
+      console.log("Actualizacion exitosa");
+    }
+  }; 
+
+  const updateNickName = async (nickName) => {
+    const savedUser = localStorage.getItem("user");
+    // Crear el objeto de datos del usuario
+    const newUpdatedData = {
+      nickName,
+      usuarioId: savedUser
+    };
+
+    const encryptedResult = encryptJSON(
+      newUpdatedData,
+      import.meta.env.VITE_ENCRYPTION_CLIENT_KEY
+    );
+
+    const response = await fetch(
+      import.meta.env.VITE_API_URL + "/api/auth/config/nickName",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "x-api-key": import.meta.env.VITE_CLIENT_API_KEY,
+        },
+        body: JSON.stringify(encryptedResult),
+      }
+    );
+
+    if (!response.ok) {
+      console.error("Error en la solicitud:", response.status);
+      return error;
+    }
+
+    if (response.ok) {
+      console.log("Actualizacion exitosa");
+    }
+  }; 
+
+
+  const updateFullName = async (fullName) => {
+    const savedUser = localStorage.getItem("user");
+    // Crear el objeto de datos del usuario
+    const newUpdatedData = {
+      fullName,
+      usuarioId: savedUser
+    };
+
+
+    const encryptedResult = encryptJSON(
+      newUpdatedData,
+      import.meta.env.VITE_ENCRYPTION_CLIENT_KEY
+    );
+
+    const response = await fetch(
+      import.meta.env.VITE_API_URL + "/api/auth/config/fullName",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "x-api-key": import.meta.env.VITE_CLIENT_API_KEY,
+        },
+        body: JSON.stringify(encryptedResult),
+      }
+    );
+
+    if (!response.ok) {
+      console.error("Error en la solicitud:", response.status);
+      return error;
+    }
+
+    if (response.ok) {
+      console.log("Actualizacion exitosa");
+    }
+  }; 
+
+  const updatePassword = async (password) => {
+    const savedUser = localStorage.getItem("user");
+    // Crear el objeto de datos del usuario
+    const newUpdatedData = {
+      password,
+      usuarioId: savedUser
+    };
+
+    const encryptedResult = encryptJSON(
+      newUpdatedData,
+      import.meta.env.VITE_ENCRYPTION_CLIENT_KEY
+    );
+
+    const response = await fetch(
+      import.meta.env.VITE_API_URL + "/api/auth/config/passwd",
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "x-api-key": import.meta.env.VITE_CLIENT_API_KEY,
+        },
+        body: JSON.stringify(encryptedResult),
+      }
+    );
+
+    if (!response.ok) {
+      console.error("Error en la solicitud:", response.status);
+      return error;
+    }
+
+    if (response.ok) {
+      console.log("Actualizacion exitosa");
+    }
+  }; 
 
   const logout = () => {
     setUser(null);
@@ -95,8 +280,10 @@ export const AuthProvider = ({ children }) => {
     localStorage.removeItem("user"); // Limpiar el localStorage
   };
 
+
+
   return (
-    <AuthContext.Provider value={{ isAuthenticated, user, login, logout }}>
+    <AuthContext.Provider value={{ isAuthenticated, user, login, logout, register, updateEmail, updateNickName, updateFullName, updatePassword}}>
       {children}
     </AuthContext.Provider>
   );

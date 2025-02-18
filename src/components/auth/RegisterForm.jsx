@@ -10,16 +10,26 @@ function RegisterForm() {
   const [password, setPassword] = useState("");
   const [confirmPassword, setConfirmPassword] = useState("");
   const [acceptTerms, setAcceptTerms] = useState(false);
+  const { register } = useAuth();
 
   const handleSubmit = (e) => {
     e.preventDefault();
 
-    console.log('Full Name:', fullName);
-    console.log('Nick Name:', nickName);
-    console.log('Email:', email);
-    console.log('Password:', password);
-    console.log('Confirm Password:', confirmPassword);
-    console.log('Accept Terms:', acceptTerms);
+    if (!acceptTerms) {
+      toast.error("Debes aceptar los terminos y condiciones.");
+      return;
+    }
+
+    if (password !== confirmPassword) {
+      toast.error("Las contraseñas no coinciden.");
+      return;
+    }
+
+    toast.promise(register(email, password, fullName, nickName), {
+      loading: "Registrando usuario...",
+      success: <b>Usuario registrado !</b>,
+      error: (err) => <b>{err.message || "No se puede registrar el usuario."}</b>
+    });
 
     setFullName("");
     setNickName("");
@@ -30,7 +40,7 @@ function RegisterForm() {
   };
 
   return (
-    <div className="flex flex-col items-center justify-center h-screen dark">
+    <div className="flex flex-col items-center justify-center">
       <div className="w-full max-w-md bg-gray-800 rounded-lg shadow-md p-6">
         <h2 className="text-2xl font-bold text-gray-200 mb-4">Register</h2>
         <form className="flex flex-col" onSubmit={handleSubmit}>
