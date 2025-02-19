@@ -237,7 +237,5 @@ function Config() {
   );
 }
 
-// return "dasdadasd";
-// }
 
 export default Config;
