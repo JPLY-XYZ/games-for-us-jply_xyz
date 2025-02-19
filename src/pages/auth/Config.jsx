@@ -137,7 +137,7 @@ function Config() {
 
   return (
     <>
-      <div className="flex sm:flex-row w-full flex-col items-center justify-center sm:gap-20 gap-2.5 bg-gray-800 rounded-lg shadow-md sm:p-8 p-6">
+      <div className="flex sm:flex-row max-w-[600px] flex-col items-center justify-center sm:gap-20 gap-2.5 bg-gray-800 rounded-lg shadow-md sm:p-6 p-4">
         <div>
           <img
             src={newAvatarUrl}
