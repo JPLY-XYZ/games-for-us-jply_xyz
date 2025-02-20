@@ -8,7 +8,7 @@ function GameButtons() {
   return (
     <div className=" flex pt-3 flex-row sm:flex-col sm:gap-2 gap-0.5 justify-center ">
       <div
-        className="flex justify-center gap-2 p-2 bg-black"
+        className="flex justify-center gap-2 p-3 bg-black rounded-lg"
         onClick={() => setLiked(!liked)}
       >
         {liked ? (
@@ -17,13 +17,13 @@ function GameButtons() {
           <Heart />
         )}
         {liked ? (
-          <p className="line-through text-red-500">FAVORITOS</p>
+          <p className="line-through text-red-500">FAVORITO</p>
         ) : (
           <p>FAVORITO</p>
         )}
       </div>
       <div
-        className="flex justify-center gap-2 p-2 bg-black"
+        className="flex justify-center gap-2 p-3 bg-black rounded-lg"
         onClick={() => setSaved(!saved)}
       >
         {saved ? (
@@ -32,7 +32,7 @@ function GameButtons() {
           <CalendarHeart />
         )}
         {saved ? (
-          <p className="line-through text-red-500">GUARDADOS</p>
+          <p className="line-through text-red-500">GUARDAR</p>
         ) : (
           <p>GUARDAR</p>
         )}
