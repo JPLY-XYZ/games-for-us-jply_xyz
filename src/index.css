@@ -69,3 +69,10 @@ button:focus-visible {
     background-color: #f9f9f9;
   }
 }
+
+
+@media (min-width: 740px) and (max-width: 975px) {
+  .disenio {
+     grid-template-columns: repeat(2, 1fr);
+  }
+}

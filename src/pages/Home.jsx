@@ -1,12 +1,13 @@
 import React from "react";
-import Card from "../components/games/Card";
+
+import List from "../components/games/List";
 
 function Home() {
   return (
     <div className="flex flex-col flex-initial grow self-start mx-6">
       <p className="text-2xl font-bold">Top 5 juegos del momento</p>
       <div>
-        <div className="bg-amber-200 h-[200px] flex flex-row"><Card/><Card/><Card/><Card/><Card/></div>
+      <List />
         <p className="text-2xl font-bold py-4">Top 5 juegos del momento</p>
         <div className="bg-amber-200 h-[200px]">LISTA2</div>
         <p className="text-2xl font-bold py-4">Top 5 juegos del momento</p>
