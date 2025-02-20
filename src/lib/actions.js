@@ -1,0 +1,3 @@
+function setFavorite(gameId) {
+    
+}

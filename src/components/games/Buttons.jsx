@@ -1,7 +1,11 @@
 import { CalendarHeart, CalendarX2, Heart, HeartOff } from "lucide-react";
 import { useState } from "react";
+import { useAuth } from "../../context/AuthContext";
 
-function GameButtons() {
+function GameButtons({}) {
+
+    const { isAuthenticated } = useAuth();
+
   const [liked, setLiked] = useState(false);
   const [saved, setSaved] = useState(false);
 
