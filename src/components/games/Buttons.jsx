@@ -2,32 +2,33 @@ import { CalendarHeart, CalendarX2, Heart, HeartOff } from "lucide-react";
 import { useState } from "react";
 import { useAuth } from "../../context/AuthContext";
 
-function GameButtons({}) {
+function GameButtons({btnStatus}) {
 
-    const { isAuthenticated } = useAuth();
+  const { isAuthenticated } = useAuth();
 
-  const [liked, setLiked] = useState(false);
-  const [saved, setSaved] = useState(false);
+  const [liked, setLiked] = useState(btnStatus.liked);
+  const [saved, setSaved] = useState(btnStatus.saved);
+
 
   return (
     <div className=" flex pt-3 flex-row sm:flex-col sm:gap-2 gap-0.5 justify-center grow">
       <div
-        className="flex justify-center gap-2 p-3 bg-black rounded-lg"
+        className=" text-white  cursor-pointer flex justify-center gap-2 p-3 bg-[var(--butons-color)] hover:bg-[var(--butons-color-hover)] rounded-lg "
         onClick={() => setLiked(!liked)}
       >
         {liked ? (
-          <HeartOff className="text-red-500 animate-pulse" />
+          <Heart className="text-red-500 animate-pulse" />
         ) : (
           <Heart />
         )}
         {liked ? (
-          <p className="line-through text-red-500">FAVORITO</p>
+          <p className="">ELIMINAR</p>
         ) : (
           <p>FAVORITO</p>
         )}
       </div>
       <div
-        className="flex justify-center gap-2 p-3 bg-black rounded-lg"
+        className="flex cursor-pointer text-white justify-center gap-2 p-3 bg-[var(--butons-color)] hover:bg-[var(--butons-color-hover)] rounded-lg"
         onClick={() => setSaved(!saved)}
       >
         {saved ? (
@@ -36,7 +37,7 @@ function GameButtons({}) {
           <CalendarHeart />
         )}
         {saved ? (
-          <p className="line-through text-red-500">GUARDAR</p>
+          <p className="">ELIMINAR</p>
         ) : (
           <p>GUARDAR</p>
         )}

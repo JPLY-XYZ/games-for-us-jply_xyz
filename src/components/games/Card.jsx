@@ -9,6 +9,7 @@ function Card({
   imgUrl,
   platforms,
   images = [imgUrl],
+  btnStatus={liked:false, saved:false}
 }) {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [isHovered, setIsHovered] = useState(false);
@@ -26,7 +27,7 @@ function Card({
   return (
     <article
       className={
-        "flex flex-col items-center rounded-xl bg-white p-3 shadow-lg hover:shadow-xl hover:transform hover:scale-105 duration-300 " +
+        "flex flex-col items-center rounded-xl bg-[var(--aside-card-background)] p-3 shadow-lg hover:shadow-xl hover:transform hover:scale-105 duration-300 " +
         mediaQuery
       }
       onMouseEnter={() => setIsHovered(true)}
@@ -43,11 +44,11 @@ function Card({
       <PlatformsIcons platforms={platforms} />
 
       <div className="flex flex-col flex-grow p-2 w-full">
-        <h2 className="text-slate-700 font-bold uppercase">{title}</h2>
-        <p className="mt-1 text-sm text-slate-400">{releaseDate}</p>
+        <h2 className="dark:text-slate-300 text-gray-700 font-bold uppercase">{title}</h2>
+        <p className="mt-1 text-sm  dark:text-slate-200">{releaseDate}</p>
 
         <div className="mt-auto">
-          <GameButtons />
+          <GameButtons btnStatus={btnStatus} />
         </div>
       </div>
     </article>

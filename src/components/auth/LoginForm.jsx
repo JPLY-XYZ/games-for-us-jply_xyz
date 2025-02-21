@@ -30,7 +30,7 @@ function LoginForm() {
 
   return (
     <div className="flex flex-col items-center justify-center">
-      <div className="w-full max-w-md bg-gray-800 rounded-lg shadow-md p-6">
+      <div className="w-full max-w-md bg-gray-500 dark:bg-gray-800 rounded-lg shadow-md p-6">
         <h2 className="text-2xl font-bold text-gray-200 mb-4">Login</h2>
         <form className="flex flex-col" onSubmit={handleSubmit}>
           <input
@@ -56,7 +56,7 @@ function LoginForm() {
               Remember me
             </label>
             <a
-              className="text-sm text-blue-500 hover:underline mb-0.5"
+              className="text-sm dark:text-blue-500 text-blue-900   hover:underline mb-0.5"
               href="#"
             >
               Forgot password?
@@ -64,7 +64,7 @@ function LoginForm() {
             <p className="text-white mt-4">
               Don't have an account?
               <Link to={"/register"} 
-                className="text-sm text-blue-500 -200 hover:underline mt-4"
+                className="text-sm dark:text-blue-500 text-blue-900 hover:underline mt-4"
                 href="#"
               >
                 Signup

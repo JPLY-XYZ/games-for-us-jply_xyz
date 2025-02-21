@@ -2,7 +2,7 @@ import { Accessibility, ChevronsLeftRightEllipsis } from "lucide-react";
 
 function PlatformsIcons({ platforms = [] }) {
   return (
-    <div className="flex pt-3 gap-2 text-3xl text-black">
+    <div className="flex pt-2 gap-2 text-3xl text-black dark:text-white">
       {/* PC */}
 
       

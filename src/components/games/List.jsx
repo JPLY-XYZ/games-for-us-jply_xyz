@@ -8,29 +8,42 @@ function List({ apiEndpoint, isOnlyFive }) {
 
   useEffect(() => {
     const fetchData = async () => {
+      setLoading(true); // Start loading state
+      const savedUser = localStorage.getItem("user");
+  
+      const method = savedUser ? "POST" : "GET";
+      const body = savedUser ? savedUser : undefined;
+  
       try {
         const response = await fetch(
-          import.meta.env.VITE_API_URL + apiEndpoint,
+          `${import.meta.env.VITE_API_URL}${apiEndpoint}`,
           {
-            method: "GET",
+            method,
             headers: {
               "Content-Type": "application/json",
               "x-api-key": import.meta.env.VITE_CLIENT_API_KEY,
             },
+            body,
           }
         );
-        if (!response.ok) throw new Error("Error al cargar los datos");
+  
+        if (!response.ok) {
+          throw new Error(`Error al cargar los datos: ${response.statusText}`);
+        }
         const data = await response.json();
         setItems(data);
       } catch (err) {
         setError(err.message);
       } finally {
-        setLoading(false);
+        setLoading(false); // Ensure loading state is updated
       }
     };
-
+  
     fetchData();
   }, [apiEndpoint]);
+  
+
+  
 
   if (loading) return <p>Cargando...</p>;
   if (error) return <p>Error: {error}</p>;
@@ -46,6 +59,7 @@ function List({ apiEndpoint, isOnlyFive }) {
           imgUrl={item.background_image}
           platforms={item.platforms}
           images={item.images}
+          btnStatus={item.btnStatus}
         />
       ))}
       {isOnlyFive && (

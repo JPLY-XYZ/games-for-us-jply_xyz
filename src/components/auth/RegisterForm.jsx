@@ -41,7 +41,7 @@ function RegisterForm() {
 
   return (
     <div className="flex flex-col items-center justify-center">
-      <div className="w-full max-w-md bg-gray-800 rounded-lg shadow-md p-6">
+      <div className="w-full max-w-md bg-gray-500 dark:bg-gray-800 rounded-lg shadow-md p-6">
         <h2 className="text-2xl font-bold text-gray-200 mb-4">Register</h2>
         <form className="flex flex-col" onSubmit={handleSubmit}>
           <input
@@ -98,7 +98,7 @@ function RegisterForm() {
               Already have an account?
               <Link
                 to={"/login"}
-                className="text-sm text-blue-500 hover:underline mt-4"
+                className="text-sm dark:text-blue-500 text-blue-900 hover:underline mt-4"
                 href="#"
               >
                 Login

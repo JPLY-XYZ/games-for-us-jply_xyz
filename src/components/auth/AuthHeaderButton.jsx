@@ -35,7 +35,7 @@ function AuthHeaderButton() {
         <button
           onClick={() => setIsOpen(!isOpen)}
           
-          className="flex items-center gap-2 bg-gray-200 p-2 rounded-xl hover:bg-gray-300 transition"
+          className="flex items-center gap-2  p-2 rounded-xl cursor-pointer bg-gray-400 hover:bg-gray-300  dark:bg-gray-700 dark:hover:bg-gray-800 transition"
         >
           {isAuthenticated ? (
             <>
@@ -57,19 +57,19 @@ function AuthHeaderButton() {
         </button>
 
         {isOpen && (
-          <div className="absolute right-0 mt-2 w-48 bg-white shadow-lg rounded-xl overflow-hidden z-50">
-            <ul className="text-gray-700">
+          <div className="absolute right-0 mt-2 w-48 dark:bg-gray-800  bg-white shadow-lg rounded-xl overflow-hidden z-50">
+            <ul>
               {isAuthenticated ? (
                 <>
                 <Link to="/configure">
-                  <li className="p-3 hover:bg-gray-100 cursor-pointer flex items-center gap-2" onClick={() => setIsOpen(!isOpen)}>
+                  <li className="p-3 dark:bg-gray-800 dark:hover:bg-gray-700 hover:bg-gray-100 cursor-pointer flex items-center gap-2" onClick={() => setIsOpen(!isOpen)}>
                     <Settings className="w-4 h-4" /> Configuración
                   </li>
                 </Link>
                   <li
                     onClick={() => {logout(); setIsOpen(!isOpen);  }}
 
-                    className="p-3 hover:bg-gray-100 cursor-pointer flex items-center gap-2"
+                    className="p-3 dark:bg-gray-800 dark:hover:bg-gray-700 hover:bg-gray-100 cursor-pointer flex items-center gap-2"
                   >
                     <LogOut className="w-4 h-4" /> Cerrar sesión
                   </li>
@@ -77,13 +77,13 @@ function AuthHeaderButton() {
               ) : (
                 <>
                   <Link to="/login">
-                    <li className="p-3 hover:bg-gray-100 cursor-pointer flex items-center gap-2" onClick={() => setIsOpen(!isOpen)}>
+                    <li className="p-3  hover:bg-gray-100 dark:bg-gray-800 dark:hover:bg-gray-700  cursor-pointer flex items-center gap-2" onClick={() => setIsOpen(!isOpen)}>
                       <LogIn className="w-4 h-4" />
                       Iniciar sesión
                     </li>
                   </Link>
                   <Link to="/register">
-                    <li className="p-3 hover:bg-gray-100 cursor-pointer flex items-center gap-2" onClick={() => setIsOpen(!isOpen)}>
+                    <li className="p-3 hover:bg-gray-100 dark:bg-gray-800 dark:hover:bg-gray-700 cursor-pointer flex items-center gap-2" onClick={() => setIsOpen(!isOpen)}>
                       <AtSign className="w-4 h-4" />
                       Crear cuenta
                     </li>
