@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import Card from "./Card";
 
-function List({ apiEndpoint, isOnlyFive }) {
+function List({ apiEndpoint, isOnlyFive, search }) {
   const [items, setItems] = useState([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
@@ -16,12 +16,12 @@ function List({ apiEndpoint, isOnlyFive }) {
   
       try {
         const response = await fetch(
-          `${import.meta.env.VITE_API_URL}${apiEndpoint}`,
+          `${import.meta.env.VITE_API_URL}${apiEndpoint}?search=${search}`,
           {
             method,
             headers: {
               "Content-Type": "application/json",
-              "x-api-key": import.meta.env.VITE_CLIENT_API_KEY,
+              "x-api-key": import.meta.env.VITE_CLIENT_API_KEY
             },
             body,
           }
