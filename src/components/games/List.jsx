@@ -1,16 +1,75 @@
+import { useEffect, useState } from "react";
 import Card from "./Card";
 
-function List() {
+function List({ apiEndpoint, isOnlyFive }) {
+  const [items, setItems] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(null);
+
+  useEffect(() => {
+    const fetchData = async () => {
+      try {
+        const response = await fetch(
+          import.meta.env.VITE_API_URL + apiEndpoint,
+          {
+            method: "GET",
+            headers: {
+              "Content-Type": "application/json",
+              "x-api-key": import.meta.env.VITE_CLIENT_API_KEY,
+            },
+          }
+        );
+        if (!response.ok) throw new Error("Error al cargar los datos");
+        const data = await response.json();
+        setItems(data);
+      } catch (err) {
+        setError(err.message);
+      } finally {
+        setLoading(false);
+      }
+    };
+
+    fetchData();
+  }, [apiEndpoint]);
+
+  if (loading) return <p>Cargando...</p>;
+  if (error) return <p>Error: {error}</p>;
+
   return (
     <div className=" mx-auto grid disenio grid-cols-1 gap-6 p-6 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5">
-      <Card images={["https://media.revistagq.com/photos/671779f32cf09b5a52e00a24/3:2/w_2700,h_1800,c_limit/GTA%20San%20Andreas.jpg","https://cdn.hobbyconsolas.com/sites/navi.axelspringer.es/public/media/image/2024/03/gta-6-3282307.jpg?tf=3840x", "https://cdn.hobbyconsolas.com/sites/navi.axelspringer.es/public/media/image/2014/11/410090-analisis-gta-v-ps4-xbox-one-pc.png?tf=3840x"]} platforms={[4, 186, 13]} title="Gta retard 2025" releaseDate="2025-01-01" imgUrl="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT6Vs4X9lF0lcuQhbseIa8Sn1DS-Nl6eK2WOA&s" />
-      <Card />
-      <Card />
-      <Card />
-      <Card />
-      <Card mediaQuery="hidden sm:block md:block xl:block 2xl:hidden" />
-      <Card mediaQuery="hidden sm:hidden md:hidden xl:block 2xl:hidden" />
-      <Card mediaQuery="hidden sm:hidden md:hidden xl:block 2xl:hidden" />
+      {items.map((item) => (
+        <Card
+          key={item.id}
+          id={item.id}
+          title={item.name}
+          releaseDate={item.released}
+          imgUrl={item.background_image}
+          platforms={item.platforms}
+          images={item.images}
+        />
+      ))}
+      {isOnlyFive && (
+        <>
+          <Card
+            title="Proximamente"
+            releaseDate="Proximamente"
+            imgUrl="https://img.pixers.pics/pho_wat(s3:700/FO/33/64/42/00/1/700_FO336442001_0f7a342e186113500b5232b8d116a614,700,700,cms:2018/10/5bd1b6b8d04b8_220x50-watermark.png,over,480,650,jpg)/fotomurales-gadget-iconos-vector-patron-sin-fisuras-dibujado-a-mano-doodle-articulos-de-juegos-de-ordenador-videojuegos-de-fondo.jpg.jpg"
+            mediaQuery="hidden sm:flex md:flex xl:flex 2xl:hidden"
+          />
+          <Card
+            title="Proximamente"
+            releaseDate="Proximamente"
+            imgUrl="https://img.pixers.pics/pho_wat(s3:700/FO/33/64/42/00/1/700_FO336442001_0f7a342e186113500b5232b8d116a614,700,700,cms:2018/10/5bd1b6b8d04b8_220x50-watermark.png,over,480,650,jpg)/fotomurales-gadget-iconos-vector-patron-sin-fisuras-dibujado-a-mano-doodle-articulos-de-juegos-de-ordenador-videojuegos-de-fondo.jpg.jpg"
+            mediaQuery="hidden sm:hidden md:hidden xl:flex 2xl:hidden"
+          />
+          <Card
+            title="Proximamente"
+            releaseDate="Proximamente"
+            imgUrl="https://img.pixers.pics/pho_wat(s3:700/FO/33/64/42/00/1/700_FO336442001_0f7a342e186113500b5232b8d116a614,700,700,cms:2018/10/5bd1b6b8d04b8_220x50-watermark.png,over,480,650,jpg)/fotomurales-gadget-iconos-vector-patron-sin-fisuras-dibujado-a-mano-doodle-articulos-de-juegos-de-ordenador-videojuegos-de-fondo.jpg.jpg"
+            mediaQuery="hidden sm:hidden md:hidden xl:flex 2xl:hidden"
+          />
+        </>
+      )}
     </div>
   );
 }

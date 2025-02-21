@@ -10,7 +10,7 @@ function GameButtons({}) {
   const [saved, setSaved] = useState(false);
 
   return (
-    <div className=" flex pt-3 flex-row sm:flex-col sm:gap-2 gap-0.5 justify-center ">
+    <div className=" flex pt-3 flex-row sm:flex-col sm:gap-2 gap-0.5 justify-center grow">
       <div
         className="flex justify-center gap-2 p-3 bg-black rounded-lg"
         onClick={() => setLiked(!liked)}

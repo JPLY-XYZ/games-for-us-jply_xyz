@@ -1,21 +1,21 @@
 import React from "react";
-
 import List from "../components/games/List";
 
+
+
 function Home() {
+ 
+   
+
   return (
     <div className="flex flex-col flex-initial grow self-start mx-6">
-      <p className="text-2xl font-bold">Top 5 juegos del momento</p>
+      <p className="text-2xl font-bold">Top 5 juegos de la semana</p>
       <div>
-      <List />
-        <p className="text-2xl font-bold py-4">Top 5 juegos del momento</p>
-        <div className="bg-amber-200 h-[200px]">LISTA2</div>
-        <p className="text-2xl font-bold py-4">Top 5 juegos del momento</p>
-        <div className="bg-amber-200 h-[200px]">LISTA3</div>
-        <p className="text-2xl font-bold py-4">Top 5 juegos del momento</p>
-        <div className="bg-amber-200 h-[200px]">LISTA4</div>
-        <p className="text-2xl font-bold py-4">Top 1 juegos del momento</p>
-        <div className="bg-amber-200 h-[200px]">LISTA5</div>
+       <List apiEndpoint="/api/games/top5/semana" isOnlyFive={true} />
+        <p className="text-2xl font-bold py-4">Top 5 juegos del mes</p>
+        <List apiEndpoint="/api/games/top5/mes" isOnlyFive={true} />
+        <p className="text-2xl font-bold py-4">Top 5 juegos del año</p>
+        <List apiEndpoint="/api/games/top5/anio" isOnlyFive={true} />     
       </div>
       <div>
         <p className="text-2xl font-bold py-4">Informacion sobre juegos</p>
@@ -26,6 +26,9 @@ function Home() {
       </div>
     </div>
   );
+  
 }
 
 export default Home;
+
+
