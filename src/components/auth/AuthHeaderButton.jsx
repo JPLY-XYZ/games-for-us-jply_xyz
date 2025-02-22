@@ -2,7 +2,7 @@ import React, { useEffect, useRef } from "react";
 import { Link } from "react-router-dom";
 import { useAuth } from "../../context/AuthContext";
 import { useState } from "react";
-import { Menu, X, User, LogOut, Settings, LogIn, AtSign } from "lucide-react";
+import { User, LogOut, Settings, LogIn, AtSign } from "lucide-react";
 
 function AuthHeaderButton() {
   const { isAuthenticated, user, logout } = useAuth();
@@ -35,25 +35,23 @@ function AuthHeaderButton() {
         <button
           onClick={() => setIsOpen(!isOpen)}
           
-          className="flex items-center gap-2  p-2 rounded-xl cursor-pointer bg-gray-400 hover:bg-gray-300  dark:bg-gray-700 dark:hover:bg-gray-800 transition"
+          className="flex items-center gap-2 p-2 rounded-xl cursor-pointer bg-gray-400 hover:bg-gray-300  dark:bg-gray-700 dark:hover:bg-gray-800 transition"
         >
           {isAuthenticated ? (
             <>
               <img
                 src={user?.avatar_url}
                 alt="User"
-                className="w-8 h-8 rounded-full mr-2"
+                className="w-8 h-8 rounded-full "
               />
               <span className="hidden sm:inline">{user?.nickName}</span>
             </>
           ) : (
             <>
-              <User className="w-5 h-5" />
+              <User className="w-8 h-8" />
               <span className="hidden sm:inline">Iniciar sesión</span>
             </>
           )}
-
-          {isOpen ? <X className="w-4 h-4" /> : <Menu className="w-4 h-4" />}
         </button>
 
         {isOpen && (

@@ -12,9 +12,9 @@ function Aside() {
     <>
       <div className=" hidden md:flex flex-col items-center">
         <Gamepad2 className="w-16 h-16 mb-2" />
-        <h1 className="text-xl font-bold">GAMES FOR US</h1>
+        <h1 className="text-4xl font-bold sigmar-regular">GAMES FOR US</h1>
         <hr className="my-4 dark:border-blue-600 border-blue-950 border-1 w-[60%]" />
-        <p className="text-sm">JPLY</p>
+        <p className="text-md phudu-uniquifier font-bold">POWERED BY JPLY</p>
         <hr className="my-4 dark:border-blue-600 border-blue-950 border-2 w-[100%]" />
       </div>
 

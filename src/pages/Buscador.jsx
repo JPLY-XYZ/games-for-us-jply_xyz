@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import List from "../components/games/List";
+import { Gamepad2 } from "lucide-react";
 
 function Buscador() {
 
@@ -21,21 +22,7 @@ const handleSubmit = (e) => {
           <form class="flex items-center max-w-lg ml-auto" onSubmit={handleSubmit}>
             <div class="relative w-full">
               <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
-                <svg
-                  viewBox="0 0 21 21"
-                  fill="none"
-                  xmlns="http://www.w3.org/2000/svg"
-                  aria-hidden="true"
-                  class="w-4 h-4 text-gray-500 dark:text-gray-400"
-                >
-                  <path
-                    d="M11.15 5.6h.01m3.337 1.913h.01m-6.979 0h.01M5.541 11h.01M15 15h2.706a1.957 1.957 0 0 0 1.883-1.325A9 9 0 1 0 2.043 11.89 9.1 9.1 0 0 0 7.2 19.1a8.62 8.62 0 0 0 3.769.9A2.013 2.013 0 0 0 13 18v-.857A2.034 2.034 0 0 1 15 15Z"
-                    stroke-width="2"
-                    stroke-linejoin="round"
-                    stroke-linecap="round"
-                    stroke="currentColor"
-                  ></path>
-                </svg>
+              <Gamepad2 className="w-5 h-5 text-gray-500 dark:text-gray-400" />
               </div>
               <input
                 required=""
