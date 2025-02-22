@@ -3,6 +3,7 @@ import GameButtons from "./Buttons";
 import PlatformsIcons from "./PlatformsIcons";
 
 function Card({
+  id,
   mediaQuery,
   title,
   releaseDate,
@@ -48,7 +49,7 @@ function Card({
         <p className="mt-1 text-sm  dark:text-slate-200">{releaseDate}</p>
 
         <div className="mt-auto">
-          <GameButtons btnStatus={btnStatus} />
+          <GameButtons gameId={id} btnStatus={btnStatus} />
         </div>
       </div>
     </article>

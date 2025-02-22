@@ -45,8 +45,9 @@ function List({ apiEndpoint, isOnlyFive, search }) {
 
   
 
-  if (loading) return <p>Cargando...</p>;
-  if (error) return <p>Error: {error}</p>;
+  if (loading) return <p className="text-2xl mt-10">Cargando...</p>;
+  if (error) return <p className="text-2xl mt-10">Error: {error}</p>;
+  if (items.length === 0) return <p className="text-2xl mt-10">No se encontraron resultados.</p>;
 
   return (
     <div className=" mx-auto grid disenio grid-cols-1 gap-6 p-6 sm:grid-cols-2 md:grid-cols-3 xl:grid-cols-4 2xl:grid-cols-5">

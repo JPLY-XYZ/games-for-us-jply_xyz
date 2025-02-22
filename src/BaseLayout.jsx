@@ -15,8 +15,8 @@ function BaseLayout({ children }) {
         <main className="flex items-center justify-center w-full order-first md:order-none z-0 md:pb-15 pb-25 pt-20 md:pt-20 mx-auto overflow-y-auto h-screen ">
           {children}
         </main>
-        <footer className="hidden md:block w-full bg-[var(--header-footer-background)] px-6 py-2 fixed bottom-0 left-0 mt-16 md:mt-4">
-          esto es el footer holaaaa
+        <footer className="hidden text-end md:block w-full bg-[var(--header-footer-background)] px-6 py-2 fixed bottom-0 left-0 mt-16 md:mt-4">
+          <p className="text-sm">© 2023 JPLY | Todos los derechos reservados | GAMES FOR US V-1.0</p>
         </footer>
       </div>
     </>

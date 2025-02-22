@@ -3,32 +3,26 @@ import List from "../components/games/List";
 import { useAuth } from "../context/AuthContext";
 import { useNavigate } from "react-router-dom";
 
+function Guardados() {
+  
+  const [search, setSearch] = useState("");
+  const [searchParam, setSearchParam] = useState("");
 
-function Favorites() {
-    
-const [search, setSearch] = useState("");
-const [searchParam, setSearchParam] = useState("");
+  const handleSubmit = (e) => {
+    e.preventDefault();
 
-const {isAuthenticated} = useAuth();
-  const navigate = useNavigate(); // hook para navegar
-  if (!isAuthenticated
-  ) {
-    navigate('/');
-   }
-
-const handleSubmit = (e) => {
-  e.preventDefault();      
-
-  console.log(search);
-  setSearchParam(search);
- 
-};
+    console.log(search);
+    setSearchParam(search);
+  };
 
   return (
     <div className="flex flex-col h-full flex-initial grow self-start mx-6 overflow-hidden">
       <div>
         <div className="m bg-[var(--header-footer-background)] px-6 py-2">
-          <form class="flex items-center max-w-lg ml-auto" onSubmit={handleSubmit}>
+          <form
+            class="flex items-center max-w-lg ml-auto"
+            onSubmit={handleSubmit}
+          >
             <div class="relative w-full">
               <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
                 <svg
@@ -86,11 +80,15 @@ const handleSubmit = (e) => {
       </div>
       <div className="overflow-auto h-screen">
         <div className=" mx-auto">
-          <List key={searchParam} apiEndpoint="/api/games/favorites/get" search={searchParam}  />
+          <List
+            key={searchParam}
+            apiEndpoint="/api/games/saved/get"
+            search={searchParam}
+          />
         </div>
       </div>
     </div>
   );
 }
 
-export default Favorites;
+export default Guardados;
