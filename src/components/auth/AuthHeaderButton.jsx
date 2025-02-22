@@ -9,24 +9,24 @@ function AuthHeaderButton() {
   const [isOpen, setIsOpen] = useState(false);
 
 
-  const excludedRef = useRef(null); // Referencia al área específica que queremos excluir
+  const excludedRef = useRef(null); 
 
   useEffect(() => {
-    // Función para manejar clics globales
+   
     const handleClickOutside = (event) => {
       if (excludedRef.current && !excludedRef.current.contains(event.target)) {
-        setIsOpen(false); // Cerrar si el clic está fuera del área específica
+        setIsOpen(false); 
       }
     };
 
-    // Agregar el listener de clic global
+ 
     document.addEventListener('click', handleClickOutside);
 
-    // Limpiar el evento cuando el componente se desmonte
+  
     return () => {
       document.removeEventListener('click', handleClickOutside);
     };
-  }, []); // El array vacío asegura que este efecto se ejecute una sola vez
+  }, []); 
 
   
   return (
