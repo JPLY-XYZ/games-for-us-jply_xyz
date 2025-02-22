@@ -1,10 +1,13 @@
-import React from "react";
+import React, { useEffect } from "react";
 import List from "../components/games/List";
 
 
 
 function Home() {
  
+  useEffect(() =>{
+      document.title= `Inicio`;
+   }, []) 
    
 
   return (

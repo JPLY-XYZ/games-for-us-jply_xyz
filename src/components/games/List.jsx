@@ -68,19 +68,31 @@ function List({ apiEndpoint, isOnlyFive, search }) {
           <Card
             title="Proximamente"
             releaseDate="Proximamente"
-            imgUrl="https://img.pixers.pics/pho_wat(s3:700/FO/33/64/42/00/1/700_FO336442001_0f7a342e186113500b5232b8d116a614,700,700,cms:2018/10/5bd1b6b8d04b8_220x50-watermark.png,over,480,650,jpg)/fotomurales-gadget-iconos-vector-patron-sin-fisuras-dibujado-a-mano-doodle-articulos-de-juegos-de-ordenador-videojuegos-de-fondo.jpg.jpg"
+            imgUrl={
+              window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches
+                ? new URL("../../assets/ImagenJuegoNotFound-oscuro.jpg", import.meta.url).href
+                : new URL("../../assets/ImagenJuegoNotFound-claro.jpg", import.meta.url).href
+            }
             mediaQuery="hidden sm:flex md:flex xl:flex 2xl:hidden"
           />
           <Card
             title="Proximamente"
             releaseDate="Proximamente"
-            imgUrl="https://img.pixers.pics/pho_wat(s3:700/FO/33/64/42/00/1/700_FO336442001_0f7a342e186113500b5232b8d116a614,700,700,cms:2018/10/5bd1b6b8d04b8_220x50-watermark.png,over,480,650,jpg)/fotomurales-gadget-iconos-vector-patron-sin-fisuras-dibujado-a-mano-doodle-articulos-de-juegos-de-ordenador-videojuegos-de-fondo.jpg.jpg"
+            imgUrl={
+              window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches
+                ? new URL("../../assets/ImagenJuegoNotFound-oscuro.jpg", import.meta.url).href
+                : new URL("../../assets/ImagenJuegoNotFound-claro.jpg", import.meta.url).href
+            }
             mediaQuery="hidden sm:hidden md:hidden xl:flex 2xl:hidden"
           />
           <Card
             title="Proximamente"
             releaseDate="Proximamente"
-            imgUrl="https://img.pixers.pics/pho_wat(s3:700/FO/33/64/42/00/1/700_FO336442001_0f7a342e186113500b5232b8d116a614,700,700,cms:2018/10/5bd1b6b8d04b8_220x50-watermark.png,over,480,650,jpg)/fotomurales-gadget-iconos-vector-patron-sin-fisuras-dibujado-a-mano-doodle-articulos-de-juegos-de-ordenador-videojuegos-de-fondo.jpg.jpg"
+            imgUrl={
+              window.matchMedia && window.matchMedia("(prefers-color-scheme: dark)").matches
+                ? new URL("../../assets/ImagenJuegoNotFound-oscuro.jpg", import.meta.url).href
+                : new URL("../../assets/ImagenJuegoNotFound-claro.jpg", import.meta.url).href
+            }
             mediaQuery="hidden sm:hidden md:hidden xl:flex 2xl:hidden"
           />
         </>

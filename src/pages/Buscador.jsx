@@ -1,8 +1,12 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import List from "../components/games/List";
 import { Gamepad2 } from "lucide-react";
 
 function Buscador() {
+
+  useEffect(() =>{
+      document.title= `Buscador`;
+   }, []) 
 
 const [search, setSearch] = useState("");
 const [searchParam, setSearchParam] = useState("");

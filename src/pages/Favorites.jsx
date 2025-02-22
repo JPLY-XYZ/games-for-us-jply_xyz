@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import List from "../components/games/List";
 import { useAuth } from "../context/AuthContext";
 import { useNavigate } from "react-router-dom";
@@ -6,6 +6,9 @@ import { Gamepad2 } from "lucide-react";
 
 
 function Favorites() {
+  useEffect(() =>{
+      document.title= `Favoritos`;
+   }, []) 
   
     
 const [search, setSearch] = useState("");

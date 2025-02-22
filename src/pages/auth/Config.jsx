@@ -5,6 +5,10 @@ import { useAuth } from "../../context/AuthContext";
 import { useNavigate } from "react-router-dom";
 
 function Config() {
+
+  useEffect(() =>{
+    document.title= `Configuración del perfil`;
+ }, [])  
   const {isAuthenticated, updateEmail, updateNickName, updateFullName, updatePassword } = useAuth();
   const navigate = useNavigate(); // hook para navegar
   if (!isAuthenticated

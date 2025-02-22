@@ -16,7 +16,7 @@ function BaseLayout({ children }) {
           {children}
         </main>
         <footer className="hidden text-end md:block w-full bg-[var(--header-footer-background)] px-6 py-2 fixed bottom-0 left-0 mt-16 md:mt-4">
-          <a className="text-sm hover:underline" href="https://github.com/JPLY-XYZ/" target="_blank" rel="noopener noreferrer">© 2023 JPLY </a>| Todos los derechos reservados | GAMES FOR US V-1.1
+          <a className="text-sm hover:underline" href="https://github.com/JPLY-XYZ/" target="_blank" rel="noopener noreferrer">© 2023 JPLY </a>| Todos los derechos reservados | GAMES FOR US V-1.3
         </footer>
       </div>
     </>

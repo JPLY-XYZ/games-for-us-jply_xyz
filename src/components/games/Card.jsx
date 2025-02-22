@@ -10,7 +10,7 @@ function Card({
   imgUrl,
   platforms,
   images = [imgUrl],
-  btnStatus={liked:false, saved:false}
+  btnStatus = { liked: false, saved: false },
 }) {
   const [currentImageIndex, setCurrentImageIndex] = useState(0);
   const [isHovered, setIsHovered] = useState(false);
@@ -37,7 +37,31 @@ function Card({
       <div className="relative overflow-hidden text-lg rounded-xl w-full">
         <img
           className="object-cover w-full h-full aspect-[19/12]"
-          src={isHovered ? images[currentImageIndex] : imgUrl}
+          src={
+            isHovered
+              ? images[currentImageIndex] ||
+                (window.matchMedia &&
+                window.matchMedia("(prefers-color-scheme: dark)").matches
+                  ? new URL(
+                      "../../assets/ImagenJuegoNotFound-oscuro.jpg",
+                      import.meta.url
+                    ).href
+                  : new URL(
+                      "../../assets/ImagenJuegoNotFound-claro.jpg",
+                      import.meta.url
+                    ).href)
+              : imgUrl ||
+                (window.matchMedia &&
+                window.matchMedia("(prefers-color-scheme: dark)").matches
+                  ? new URL(
+                      "../../assets/ImagenJuegoNotFound-oscuro.jpg",
+                      import.meta.url
+                    ).href
+                  : new URL(
+                      "../../assets/ImagenJuegoNotFound-claro.jpg",
+                      import.meta.url
+                    ).href)
+          }
           alt={title}
         />
       </div>
@@ -45,7 +69,9 @@ function Card({
       <PlatformsIcons platforms={platforms} />
 
       <div className="flex flex-col flex-grow p-2 w-full">
-        <h2 className="dark:text-slate-300 text-gray-700 font-bold uppercase">{title}</h2>
+        <h2 className="dark:text-slate-300 text-gray-700 font-bold uppercase">
+          {title}
+        </h2>
         <p className="mt-1 text-sm  dark:text-slate-200">{releaseDate}</p>
 
         <div className="mt-auto">
