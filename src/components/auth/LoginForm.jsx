@@ -1,41 +1,13 @@
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { useAuth } from "../../context/AuthContext";
 import { Link } from "react-router-dom";
 import toast from "react-hot-toast";
 
 function LoginForm() {
 
-
-  const [remember, setRemember] = useState(
-    JSON.parse(localStorage.getItem("rememberLoginData"))?.remember || false
-  );
-  const [email, setEmail] = useState(
-    JSON.parse(localStorage.getItem("rememberLoginData"))?.email || ""
-  );
-  const [password, setPassword] = useState(
-    JSON.parse(localStorage.getItem("rememberLoginData"))?.password || ""
-  );
-  
-  useEffect(() => {
-    if (remember) {
-      localStorage.setItem("rememberLoginData", JSON.stringify({ remember, email, password }));
-    } else {
-      localStorage.removeItem("rememberLoginData");
-    }
-  }, [remember, email, password]);
-  
-  useEffect(() => {
-    const rememberLoginData = JSON.parse(localStorage.getItem("rememberLoginData"));
-    if (rememberLoginData) {
-      setEmail(rememberLoginData.email);
-      setPassword(rememberLoginData.password);
-      setRemember(rememberLoginData.remember);
-    }
-  }, []);
-  
- 
-  
-
+   const [email, setEmail] = useState('');
+   const [password, setPassword] = useState('');
+   const [remember, setRemember] = useState(true);
    const {login} = useAuth();
  
    const handleSubmit = (e) => {
@@ -48,11 +20,13 @@ function LoginForm() {
          success: <b>Sesion iniciada !</b>,
          error: <b>No se puede iniciar sesion.</b>,
        }
-     );    
-   };
-
-
+     );
+  
+     setEmail('');
+     setPassword('');
+     setRemember(false);
     
+   };
 
   return (
     <div className="flex flex-col items-center justify-center">
@@ -62,7 +36,7 @@ function LoginForm() {
           <input
             placeholder="Email address"
             className="bg-gray-700 text-gray-200 border-0 rounded-md p-2 mb-4 focus:bg-gray-600 focus:outline-none focus:ring-1 focus:ring-blue-500 transition ease-in-out duration-150"
-            type="email"
+            type="text"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />

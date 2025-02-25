@@ -11,7 +11,7 @@ function Home() {
    
 
   return (
-    <div className="flex flex-col flex-initial grow self-start mx-6 mt-6">
+    <div className="flex flex-col flex-initial grow self-start mx-6">
       <p className="text-2xl font-bold">Top 5 juegos de la semana</p>
       <div>
        <List apiEndpoint="/api/games/top5/semana" isOnlyFive={true} />
