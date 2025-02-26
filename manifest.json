@@ -9,7 +9,7 @@
     "description": "A SIMPLE WEB APP TO FIND GAMES",
     "icons": [
         {
-            "src": "/icons/icon-144x144.png",
+            "src": "/icons/icono-144x144.png",
             "sizes": "144x144",
             "type": "image/png"
         },
