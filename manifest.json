@@ -36,6 +36,7 @@
     "type": "image/png",
     "form_factor": "wide"
   },
+  
   {
     "src": "/screenshots/mobile.png",
     "sizes": "750x1334",
