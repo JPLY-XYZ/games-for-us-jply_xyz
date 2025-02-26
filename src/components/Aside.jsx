@@ -6,10 +6,13 @@ import {
   Search,
 } from "lucide-react";
 import { Link } from "react-router-dom";
+import AuthHeaderButton from "./auth/AuthHeaderButton";
 
 function Aside() {
   return (
     <>
+    <div className="flex flex-col justify-between h-full items-center">
+      <div>
       <div className=" hidden md:flex flex-col items-center">
         <Gamepad2 className="w-16 h-16 mb-2" />
         <h1 className="text-4xl font-bold sigmar-regular">GAMES FOR US</h1>
@@ -18,9 +21,9 @@ function Aside() {
         <hr className="my-4 dark:border-blue-600 border-blue-950 border-2 w-[100%]" />
       </div>
 
-      <div className="grid md:grid-cols-1 grid-cols-4 md:grid-rows-4 gap-4">
+      <div className="grid md:grid-cols-1 grid-cols-5 md:grid-rows-5 gap-4">
         <Link
-          className="flex items-center px-4 py-2 bg-[var(--butons-color)] hover:bg-[var(--butons-color-hover)]  text-white rounded-lg focus:outline-none"
+          className="flex items-center gap-2 p-2 rounded-xl cursor-pointer bg-gray-400 hover:bg-gray-300  dark:bg-slate-500 dark:hover:bg-slate-600 transition"
           to="/"
         >
           <div className="flex items-center justify-center mx-auto md:mx-0 gap-2">
@@ -29,7 +32,7 @@ function Aside() {
           </div>
         </Link>
         <Link
-          className="flex items-center px-4 py-2 bg-[var(--butons-color)] hover:bg-[var(--butons-color-hover)] text-white rounded-lg  focus:outline-none"
+          className="flex items-center gap-2 p-2 rounded-xl cursor-pointer bg-gray-400 hover:bg-gray-300  dark:bg-slate-500 dark:hover:bg-slate-600 transition"
           to="/buscador"
         >
           <div className="flex items-center justify-center mx-auto md:mx-0 gap-4">
@@ -38,7 +41,7 @@ function Aside() {
           </div>
         </Link>
         <Link
-          className="flex items-center px-4 py-2 bg-[var(--butons-color)] hover:bg-[var(--butons-color-hover)] text-white rounded-lg  focus:outline-none"
+          className="flex items-center gap-2 p-2 rounded-xl cursor-pointer bg-gray-400 hover:bg-gray-300  dark:bg-slate-500 dark:hover:bg-slate-600 transition"
           to="/juegos-favoritos"
         >
           <div className="flex items-center justify-center mx-auto md:mx-0 gap-4">
@@ -47,15 +50,21 @@ function Aside() {
           </div>
         </Link>
         <Link
-          className="flex items-center px-4 py-2 bg-[var(--butons-color)] hover:bg-[var(--butons-color-hover)] text-white rounded-lg  focus:outline-none"
+          className="flex items-center gap-2 p-2 rounded-xl cursor-pointer bg-gray-400 hover:bg-gray-300  dark:bg-slate-500 dark:hover:bg-slate-600 transition"
           to="/juegos-pendientes"
         >
           <div className="flex items-center justify-center mx-auto md:mx-0 gap-4">
             <CalendarClock />
-            <span className="hidden sm:inline">Juegos Pendientes</span>
+            <span className="hidden sm:inline">Juegos Guardados</span>
           </div>
         </Link>
+        <div className="block md:hidden"><AuthHeaderButton /></div>
       </div>
+      </div>
+      <div className="hidden md:block"><AuthHeaderButton /></div>
+      </div>
+        
+    
     </>
   );
 }

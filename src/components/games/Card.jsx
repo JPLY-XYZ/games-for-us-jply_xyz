@@ -28,13 +28,13 @@ function Card({
   return (
     <article
       className={
-        "flex flex-col  items-center rounded-xl bg-[var(--aside-card-background)] p-3 shadow-lg hover:shadow-xl hover:transform hover:scale-105 duration-300 " +
+        "flex flex-col items-center rounded-xl bg-[var(--aside-card-background)] p-3 shadow-lg hover:shadow-xl hover:transform hover:scale-105 duration-300 " +
         mediaQuery
       }
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
     >
-      <div className="relative flex overflow-hidden text-lg rounded-xl w-full">
+      <div className="relative overflow-hidden text-lg rounded-xl w-full">
         <img
           className="object-cover w-full h-full aspect-[19/12]"
           src={

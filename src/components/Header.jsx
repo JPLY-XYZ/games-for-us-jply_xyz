@@ -7,7 +7,7 @@ function Header() {
     <>
       <div className="flex justify-between md:justify-end items-center px-4 ">
         <div className="flex md:hidden items-center">
-         <h1 className="text-2xl font-bold sigmar-regular">GAMES FOR US</h1>
+         {/* <h1 className="text-2xl font-bold sigmar-regular">GAMES FOR US</h1> */}
         </div>
         <AuthHeaderButton />
       </div>

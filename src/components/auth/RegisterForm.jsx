@@ -28,7 +28,9 @@ function RegisterForm() {
     toast.promise(register(email, password, fullName, nickName), {
       loading: "Registrando usuario...",
       success: <b>Usuario registrado !</b>,
-      error: (err) => <b>{err.message || "No se puede registrar el usuario."}</b>
+      error: (err) => (
+        <b>{err.message || "No se puede registrar el usuario."}</b>
+      ),
     });
 
     setFullName("");
@@ -48,6 +50,7 @@ function RegisterForm() {
             placeholder="Full Name"
             className="bg-gray-700 text-gray-200 border-0 rounded-md p-2 mb-4 focus:bg-gray-600 focus:outline-none focus:ring-1 focus:ring-blue-500 transition ease-in-out duration-150"
             type="text"
+            required
             value={fullName}
             onChange={(e) => setFullName(e.target.value)}
           />
@@ -57,12 +60,14 @@ function RegisterForm() {
             type="text"
             value={nickName}
             maxLength={15}
+            required
             onChange={(e) => setNickName(e.target.value)}
           />
           <input
             placeholder="Email address"
             className="bg-gray-700 text-gray-200 border-0 rounded-md p-2 mb-4 focus:bg-gray-600 focus:outline-none focus:ring-1 focus:ring-blue-500 transition ease-in-out duration-150"
             type="email"
+            required
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
@@ -71,12 +76,16 @@ function RegisterForm() {
             className="bg-gray-700 text-gray-200 border-0 rounded-md p-2 mb-4 focus:bg-gray-600 focus:outline-none focus:ring-1 focus:ring-blue-500 transition ease-in-out duration-150"
             type="password"
             value={password}
+            minLength={8}
+            title="La contraseña debe tener al menos 8 caracteres, incluyendo mayúsculas, minúsculas, números y caracteres especiales."
             onChange={(e) => setPassword(e.target.value)}
           />
           <input
             placeholder="Confirm Password"
             className="bg-gray-700 text-gray-200 border-0 rounded-md p-2 mb-4 focus:bg-gray-600 focus:outline-none focus:ring-1 focus:ring-blue-500 transition ease-in-out duration-150"
             type="password"
+            minLength={8}
+            title="La contraseña debe tener al menos 8 caracteres, incluyendo mayúsculas, minúsculas, números y caracteres especiales."
             value={confirmPassword}
             onChange={(e) => setConfirmPassword(e.target.value)}
           />

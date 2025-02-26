@@ -31,11 +31,11 @@ function AuthHeaderButton() {
   
   return (
     
-    <div ref={excludedRef} className="relative inline-block text-left">
+    <div ref={excludedRef} className="h-full w-full relative inline-block text-left">
         <button
           onClick={() => setIsOpen(!isOpen)}
           
-          className="flex items-center gap-2 p-2 rounded-xl cursor-pointer bg-gray-400 hover:bg-gray-300  dark:bg-gray-700 dark:hover:bg-gray-800 transition"
+          className="flex h-full w-full content-center items-center gap-2 p-2 rounded-xl cursor-pointer bg-gray-400 hover:bg-gray-300  dark:bg-slate-500 dark:hover:bg-slate-600 transition"
         >
           {isAuthenticated ? (
             <>
@@ -55,7 +55,7 @@ function AuthHeaderButton() {
         </button>
 
         {isOpen && (
-          <div className="absolute right-0 mt-2 w-48 dark:bg-gray-800  bg-white shadow-lg rounded-xl overflow-hidden z-50">
+          <div className="absolute md:bottom-15 md:left-0  bottom-15 right-0 mt-2 w-48 dark:bg-gray-800  bg-white shadow-lg rounded-xl overflow-hidden z-50">
             <ul>
               {isAuthenticated ? (
                 <>
