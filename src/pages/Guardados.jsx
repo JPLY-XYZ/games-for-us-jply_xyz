@@ -5,10 +5,10 @@ import { useNavigate } from "react-router-dom";
 import { Gamepad2 } from "lucide-react";
 
 function Guardados() {
-  useEffect(() =>{
-      document.title= `Guardados`;
-   }, []) 
-  
+  useEffect(() => {
+    document.title = `Guardados`;
+  }, []);
+
   const [search, setSearch] = useState("");
   const [searchParam, setSearchParam] = useState("");
 
@@ -20,7 +20,7 @@ function Guardados() {
   };
 
   return (
-    <div className="flex flex-col h-full flex-initial grow self-start mx-6 overflow-hidden">
+    <div className="flex flex-col h-full flex-initial grow self-start  overflow-hidden">
       <div>
         <div className="m bg-[var(--header-footer-background)] px-6 py-2">
           <form
@@ -29,7 +29,7 @@ function Guardados() {
           >
             <div class="relative w-full">
               <div class="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
-              <Gamepad2 className="w-5 h-5 text-gray-500 dark:text-gray-400" />
+                <Gamepad2 className="w-5 h-5 text-gray-500 dark:text-gray-400" />
               </div>
               <input
                 required=""
@@ -39,6 +39,7 @@ function Guardados() {
                 type="text"
                 onChange={(e) => setSearch(e.target.value)}
               />
+
               <button
                 class="absolute inset-y-0 end-0 flex items-center pe-3"
                 type="button"
@@ -66,6 +67,7 @@ function Guardados() {
               Search
             </button>
           </form>
+
         </div>
       </div>
       <div className="overflow-auto h-screen">

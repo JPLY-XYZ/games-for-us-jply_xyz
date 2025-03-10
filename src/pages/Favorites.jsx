@@ -30,7 +30,7 @@ const handleSubmit = (e) => {
 };
 
   return (
-    <div className="flex flex-col h-full flex-initial grow self-start mx-6 overflow-hidden">
+    <div className="flex flex-col h-full flex-initial grow self-start  overflow-hidden">
       <div>
         <div className="m bg-[var(--header-footer-background)] px-6 py-2">
           <form class="flex items-center max-w-lg ml-auto" onSubmit={handleSubmit}>

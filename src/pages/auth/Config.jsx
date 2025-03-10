@@ -9,7 +9,7 @@ function Config() {
   useEffect(() =>{
     document.title= `Configuración del perfil`;
  }, [])  
-  const {isAuthenticated, updateEmail, updateNickName, updateFullName, updatePassword } = useAuth();
+  const {isAuthenticated, updateEmail, updateNickName, updateFullName, updatePassword, updateOrSyncSteamGames } = useAuth();
   const navigate = useNavigate(); // hook para navegar
   if (!isAuthenticated
   ) {
@@ -26,6 +26,7 @@ function Config() {
   const [newEmail, setNewEmail] = useState("");
   const [newPassword, setNewPassword] = useState("");
   const [confirmNewPassword, setConfirmNewPassword] = useState("");
+  const [steamId64, setSteamId64] = useState("");
 
   const getUserData = async () => {
     const user = JSON.parse(localStorage.getItem("user"));
@@ -58,6 +59,7 @@ function Config() {
       setNewAvatarUrl(data.avatar_url || "");
       setNewNickName(data.nickName || "");
       setNewEmail(data.email || "");
+      setSteamId64(data.steamId64 || "")
     } catch (error) {
       console.error("Error fetching config:", error);
       setError(error);
@@ -137,6 +139,21 @@ function Config() {
      setNewPassword('');
      setConfirmNewPassword('');
     
+  };
+
+  const handleSteamConnect = async (e) => {
+
+    console.log("actualizando con steamid: " + steamId64);
+
+    e.preventDefault();
+    toast.promise(
+      updateOrSyncSteamGames(steamId64),
+       {
+         loading: 'Actualizando',
+         success: <b>Actualizado !</b>,
+         error: <b>No se puede Actualizar.</b>,
+       }
+     );
   };
 
   return (
@@ -227,6 +244,26 @@ function Config() {
                 value={confirmNewPassword}
                 onChange={(e) => setConfirmNewPassword(e.target.value)}
               />
+            </div>
+            <button
+              className="bg-gradient-to-r from-indigo-500 to-blue-500 text-white font-bold py-2 px-4 rounded-md hover:bg-indigo-600 hover:to-blue-600 transition ease-in-out duration-150"
+              type="submit"
+            >
+              <RefreshCw />
+            </button>
+          </form>
+          <hr className="my-4 border-blue-600 border-1 w-full" />
+          <h3 className="text-left">Sincronizar con Steam</h3>
+          <form className="flex items-center justify-between" onSubmit={handleSteamConnect}>
+            <div className="flex flex-col gap-3 items-center justify-between">
+              <input
+                placeholder="XXXXXXXXXXXXXXXXX"
+                className="flex-grow bg-gray-700 text-gray-200 border-0 rounded-md p-2 mr-4 focus:bg-gray-600 focus:outline-none focus:ring-1 focus:ring-blue-500 transition ease-in-out duration-150"
+                type="text"
+                value={steamId64}
+                onChange={(e) => setSteamId64(e.target.value)}
+              />
+              
             </div>
             <button
               className="bg-gradient-to-r from-indigo-500 to-blue-500 text-white font-bold py-2 px-4 rounded-md hover:bg-indigo-600 hover:to-blue-600 transition ease-in-out duration-150"

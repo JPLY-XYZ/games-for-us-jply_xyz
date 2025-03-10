@@ -271,6 +271,37 @@ export const AuthProvider = ({ children }) => {
     }
   }; 
 
+  const updateOrSyncSteamGames = async (steamId64) => {
+
+
+
+    const savedUser = localStorage.getItem("user");
+    // Crear el objeto de datos del usuario
+   
+
+    
+ 
+    const response = await fetch(
+      import.meta.env.VITE_API_URL + "/api/games/moreInfo?steamId64="+steamId64,
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          "x-api-key": import.meta.env.VITE_CLIENT_API_KEY,
+        },
+        body: savedUser,
+      }
+    );
+
+    if (!response.ok) {
+      return error;
+  }
+
+    if (response.ok) {
+      console.log("Actualizacion exitosa");
+    }
+  }; 
+
   const logout = () => {
     setUser(null);
     toast(<b>Sesion cerrada!</b>, {
@@ -283,7 +314,7 @@ export const AuthProvider = ({ children }) => {
 
 
   return (
-    <AuthContext.Provider value={{ isAuthenticated, user, login, logout, register, updateEmail, updateNickName, updateFullName, updatePassword}}>
+    <AuthContext.Provider value={{ isAuthenticated, user, login, logout, register, updateEmail, updateNickName, updateFullName, updatePassword,updateOrSyncSteamGames}}>
       {children}
     </AuthContext.Provider>
   );
