@@ -149,7 +149,7 @@ function Config() {
     toast.promise(
       updateOrSyncSteamGames(steamId64),
        {
-         loading: 'Actualizando',
+         loading: 'Sincronizando biblioteca, esto puede tardar varios minutos!',
          success: <b>Actualizado !</b>,
          error: <b>No se puede Actualizar.</b>,
        }

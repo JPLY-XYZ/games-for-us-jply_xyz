@@ -277,7 +277,8 @@ export const AuthProvider = ({ children }) => {
 
     const savedUser = localStorage.getItem("user");
     // Crear el objeto de datos del usuario
-   
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), 300000); 
 
     
  
@@ -289,10 +290,11 @@ export const AuthProvider = ({ children }) => {
           "Content-Type": "application/json",
           "x-api-key": import.meta.env.VITE_CLIENT_API_KEY,
         },
-        body: savedUser,
+        body: savedUser,  
+        signal: controller.signal, // Agregar el `signal` del AbortController
       }
     );
-
+    clearTimeout(timeoutId);
     if (!response.ok) {
       return error;
   }
