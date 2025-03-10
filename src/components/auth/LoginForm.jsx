@@ -73,7 +73,7 @@ function LoginForm() {
             value={password}
             onChange={(e) => setPassword(e.target.value)}
           />
-          <div className="flex items-center justify-between flex-wrap">
+          <div className="flex gap-7 items-center justify-between flex-wrap">
             <label
               className="text-sm text-gray-200 cursor-pointer"
               htmlFor="remember-me"
@@ -81,24 +81,15 @@ function LoginForm() {
               <input className="mr-2" id="remember-me"  type="checkbox" checked={remember} onChange={(e) => setRemember(e.target.checked)}/>
               Remember me
             </label>
-            <a
-              className="text-sm dark:text-blue-500 text-blue-900   hover:underline mb-0.5"
+            <Link to={"/register"} 
+              className=" text-sm dark:text-blue-500 text-blue-900 hover:underline mb-0.5"
               href="#"
             >
-              Forgot password?
-            </a>
-            <p className="text-white mt-4">
-              Don't have an account?
-              <Link to={"/register"} 
-                className="text-sm dark:text-blue-500 text-blue-900 hover:underline mt-4"
-                href="#"
-              >
-                Signup
-              </Link>
-            </p>
+             Don't have an account?
+            </Link>
           </div>
           <button
-            className="bg-gradient-to-r from-indigo-500 to-blue-500 text-white font-bold py-2 px-4 rounded-md mt-4 hover:bg-indigo-600 hover:to-blue-600 transition ease-in-out duration-150"
+            className="cursor-pointer bg-gradient-to-r from-indigo-500 to-blue-500 text-white font-bold py-2 px-4 rounded-md mt-4 hover:bg-indigo-600 hover:to-blue-600 transition ease-in-out duration-150"
             type="submit"
           >
             Login

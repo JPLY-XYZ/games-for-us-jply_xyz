@@ -28,7 +28,7 @@ function Card({
   return (
     <article
       className={
-        "flex flex-col items-center rounded-xl bg-[var(--aside-card-background)] p-3 shadow-lg hover:shadow-xl hover:transform hover:scale-105 duration-300 " +
+        "cursor-pointer flex flex-col items-center rounded-xl bg-[var(--aside-card-background)] p-3 shadow-lg hover:shadow-xl hover:transform hover:scale-105 duration-300 " +
         mediaQuery
       }
       onMouseEnter={() => setIsHovered(true)}
