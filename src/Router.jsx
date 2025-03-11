@@ -11,6 +11,7 @@ import Buscador from './pages/Buscador';
 import Favorites from './pages/Favorites';
 import Guardados from './pages/Guardados';
 import { useAuth } from './context/AuthContext';
+import HowToUse from './pages/HowToUse';
 
 
 function Router() {
@@ -23,6 +24,7 @@ function Router() {
     <Routes>
       <Route path="/" element={<Home />} />
       <Route path="/buscador" element={<Buscador />} />
+      <Route path="/howtouse" element={<HowToUse />} />
       <Route path="/juegos-favoritos" element={isAuthenticated ? <Favorites /> : <Login />} />
       <Route path="/juegos-pendientes" element={isAuthenticated ? <Guardados /> :<Login />} />
       <Route path="/login" element={<Login />} />

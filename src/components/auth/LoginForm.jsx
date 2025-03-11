@@ -57,17 +57,17 @@ function LoginForm() {
   return (
     <div className="flex flex-col items-center justify-center">
       <div className="w-full max-w-md bg-gray-500 dark:bg-gray-800 rounded-lg shadow-md p-6">
-        <h2 className="text-2xl font-bold text-gray-200 mb-4">Login</h2>
+        <h2 className="text-2xl font-bold text-gray-200 mb-4">Acceso</h2>
         <form className="flex flex-col" onSubmit={handleSubmit}>
           <input
-            placeholder="Email address"
+            placeholder="Email"
             className="bg-gray-700 text-gray-200 border-0 rounded-md p-2 mb-4 focus:bg-gray-600 focus:outline-none focus:ring-1 focus:ring-blue-500 transition ease-in-out duration-150"
             type="email"
             value={email}
             onChange={(e) => setEmail(e.target.value)}
           />
           <input
-            placeholder="Password"
+            placeholder="Contraseña"
             className="bg-gray-700 text-gray-200 border-0 rounded-md p-2 mb-4 focus:bg-gray-600 focus:outline-none focus:ring-1 focus:ring-blue-500 transition ease-in-out duration-150"
             type="password"
             value={password}
@@ -79,20 +79,20 @@ function LoginForm() {
               htmlFor="remember-me"
             >
               <input className="mr-2" id="remember-me"  type="checkbox" checked={remember} onChange={(e) => setRemember(e.target.checked)}/>
-              Remember me
+              Recuerdame
             </label>
             <Link to={"/register"} 
               className=" text-sm dark:text-blue-500 text-blue-900 hover:underline mb-0.5"
               href="#"
             >
-             Don't have an account?
+             No tienes cuenta? Entra aquí
             </Link>
           </div>
           <button
             className="cursor-pointer bg-gradient-to-r from-indigo-500 to-blue-500 text-white font-bold py-2 px-4 rounded-md mt-4 hover:bg-indigo-600 hover:to-blue-600 transition ease-in-out duration-150"
             type="submit"
           >
-            Login
+            Iniciar sesion
           </button>
         </form>
       </div>
