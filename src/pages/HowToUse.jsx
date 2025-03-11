@@ -9,13 +9,13 @@ function HowToUse() {
 
     <section className="p-6 bg-[var(--aside-card-background)] shadow-md rounded-lg">
       <p className=" text-lg">
-        Esta web está pensada para buscar y guardar los juegos actuales o antiguos que más quieras.
+        Esta web está pensada para buscar y guardar los juegos actuales o antiguos que más te gusten.
       </p>
     </section>
 
     <section className="p-6 bg-[var(--aside-card-background)] shadow-md rounded-lg">
       <h3 className="text-2xl font-bold ">HOME</h3>
-      <p className="text-lg">En este apartado de la web, tenemos disponibles los juegos destacados de la semana, del mes y del año.</p>
+      <p className="text-lg">En este apartado, tenemos disponibles los juegos destacados de la semana, del mes y del año.</p>
       <p className="text-lg mb-4"> Si pasamos el raton sobre un juego se mostraran imagenes de dicho juego en caso de que existan.</p>
       <img className="sm:w-[80%] w-[95%] mx-auto rounded-lg shadow-md" src="/screenshots/home.png" alt="Home Screenshot" />
     </section>

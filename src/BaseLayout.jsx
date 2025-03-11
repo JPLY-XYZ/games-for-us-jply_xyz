@@ -6,9 +6,7 @@ import { Link } from "react-router-dom";
 function BaseLayout({ children }) {
   return (
     <>
-      {/* <header className="fixed top-0 z-10 left-0 w-full    px-6 py-2 ">
-        <Header />
-      </header> */}
+    
       <div className="md:grid w-full md:grid-cols-[256px_auto] overflow-hidden">
         <aside className=" md:relative fixed bottom-0 left-0 w-full h-auto bg-[var(--aside-card-background)] p-6 md:h-screen md:w-64 z-10 md:order-first ">
           <Aside />
@@ -32,7 +30,7 @@ function BaseLayout({ children }) {
           >
             © 2023 JPLY{" "}
           </a>
-          | Todos los derechos reservados | GAMES FOR US V-1.5
+          | Todos los derechos reservados | GAMES FOR US V-1.5.1
         </footer>
       </div>
     </>
