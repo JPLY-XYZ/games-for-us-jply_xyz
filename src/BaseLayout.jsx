@@ -28,9 +28,9 @@ function BaseLayout({ children }) {
             target="_blank"
             rel="noopener noreferrer"
           >
-            © 2025 JPLY
+            © 2025 JPLY 
           </a>
-          | Todos los derechos reservados | GAMES FOR US V-1.5.1
+          | Todos los derechos reservados | GAMES FOR US V-1.5.2
         </footer>
       </div>
     </>

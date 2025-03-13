@@ -231,22 +231,25 @@ function Config() {
           <form className="flex items-center justify-between" onSubmit={handleUpdatePassword}>
             <div className="flex flex-col gap-3 items-center justify-between">
               <input
+              disabled
                 placeholder="Nueva contraseña"
-                className="flex-grow bg-gray-700 text-gray-200 border-0 rounded-md p-2 mr-4 focus:bg-gray-600 focus:outline-none focus:ring-1 focus:ring-blue-500 transition ease-in-out duration-150"
+                className="cursor-not-allowed flex-grow bg-gray-700 text-gray-200 border-0 rounded-md p-2 mr-4 focus:bg-gray-600 focus:outline-none focus:ring-1 focus:ring-blue-500 transition ease-in-out duration-150"
                 type="password"
                 value={newPassword}
                 onChange={(e) => setNewPassword(e.target.value)}
               />
               <input
+              disabled
                 placeholder="Repetir nueva contraseña"
-                className="flex-grow bg-gray-700 text-gray-200 border-0 rounded-md p-2 mr-4 focus:bg-gray-600 focus:outline-none focus:ring-1 focus:ring-blue-500 transition ease-in-out duration-150"
+                className=" cursor-not-allowed flex-grow bg-gray-700 text-gray-200 border-0 rounded-md p-2 mr-4 focus:bg-gray-600 focus:outline-none focus:ring-1 focus:ring-blue-500 transition ease-in-out duration-150"
                 type="password"
                 value={confirmNewPassword}
                 onChange={(e) => setConfirmNewPassword(e.target.value)}
               />
             </div>
             <button
-              className="cursor-pointer bg-gradient-to-r from-indigo-500 to-blue-500 text-white font-bold py-2 px-4 rounded-md hover:bg-indigo-600 hover:to-blue-600 transition ease-in-out duration-150"
+            disabled 
+              className="cursor-not-allowed bg-gradient-to-r from-indigo-500 to-blue-500 text-white font-bold py-2 px-4 rounded-md hover:bg-indigo-600 hover:to-blue-600 transition ease-in-out duration-150"
               type="submit"
             >
               <RefreshCw />
