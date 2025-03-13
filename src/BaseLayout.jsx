@@ -30,7 +30,7 @@ function BaseLayout({ children }) {
           >
             © 2025 JPLY 
           </a>
-          | Todos los derechos reservados | GAMES FOR US V-1.5.2
+          | Todos los derechos reservados | GAMES FOR US V-1.5.3
         </footer>
       </div>
     </>

@@ -163,7 +163,7 @@ function Config() {
           <img
             src={newAvatarUrl}
             alt="Logo"
-            className="w-32 h-32 mx-auto mb-4"
+            className="w-32 h-32 mx-auto mb-4 rounded-xl"
           />
           <h2 className="text-2xl font-bold text-gray-200 mb-4">
             Hola, {newFullName}
