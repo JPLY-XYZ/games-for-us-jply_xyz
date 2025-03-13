@@ -177,6 +177,7 @@ function Config() {
             onSubmit={handleUpdateEmail}
           >
             <input
+            required
               placeholder="Email address"
               className="flex-grow bg-gray-700 text-gray-200 border-0 rounded-md p-2 mr-4 focus:bg-gray-600 focus:outline-none focus:ring-1 focus:ring-blue-500 transition ease-in-out duration-150"
               type="text"
@@ -194,6 +195,7 @@ function Config() {
           <h3 className="text-left">Actualizar Nombre</h3>
           <form className="flex items-center justify-between" onSubmit={handleUpdateFullName}>
             <input
+            required
               placeholder="Nombre completo"
               className="flex-grow bg-gray-700 text-gray-200 border-0 rounded-md p-2 mr-4 focus:bg-gray-600 focus:outline-none focus:ring-1 focus:ring-blue-500 transition ease-in-out duration-150"
               type="text"
@@ -212,6 +214,7 @@ function Config() {
           <h3 className="text-left">Actualizar NickName</h3>
           <form className="flex items-center justify-between" onSubmit={handleUpdateNickName}>
             <input
+            required
               placeholder="NickName"
               className="flex-grow bg-gray-700 text-gray-200 border-0 rounded-md p-2 mr-4 focus:bg-gray-600 focus:outline-none focus:ring-1 focus:ring-blue-500 transition ease-in-out duration-150"
               type="text"
@@ -260,6 +263,7 @@ function Config() {
           <form className="flex items-center justify-between" onSubmit={handleSteamConnect}>
             <div className="flex flex-col gap-3 items-center justify-between">
               <input
+              required
                 placeholder="XXXXXXXXXXXXXXXXX"
                 className="flex-grow bg-gray-700 text-gray-200 border-0 rounded-md p-2 mr-4 focus:bg-gray-600 focus:outline-none focus:ring-1 focus:ring-blue-500 transition ease-in-out duration-150"
                 type="text"
