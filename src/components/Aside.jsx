@@ -66,7 +66,8 @@ function Aside() {
           </div>
         </div>
         <div className="md:flex hidden  flex-col items-center">
-        <img src="/qrcode.svg" className="w-[80%]" alt="" />
+        <img src="/qrcode-dark.svg" className="dark:block hidden w-[80%]" alt="" />
+        <img src="/qrcode-light.svg" className="dark:hidden block w-[80%]" alt="" />
         <p>¡ESCANEAME!</p>
         </div>
         <div className="hidden md:block">
