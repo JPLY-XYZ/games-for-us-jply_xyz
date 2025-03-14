@@ -46,7 +46,7 @@ function List({ apiEndpoint, isOnlyFive, search }) {
   
 
   if (loading) return <p className="text-2xl mt-10">Cargando...</p>;
-  if (error) return <p className="text-2xl mt-10">Error: {error}</p>;
+  if (error) return <p className="text-2xl mt-10">Error: RAWG API LIMIT REACHED</p>;
   if (items.length === 0) return <p className="text-2xl mt-10">No se encontraron resultados.</p>;
 
   return (
